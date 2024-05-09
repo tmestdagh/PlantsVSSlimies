@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvqfmnhkikfip"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_3tp4e"]
+[ext_resource type="PackedScene" uid="uid://bob6kppcchqmu" path="res://scenes/map.tscn" id="1_stwdr"]
+[ext_resource type="PackedScene" uid="uid://45tccxis6no" path="res://scenes/hud.tscn" id="2_5pu7c"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_3tp4e")
+
+[node name="SunTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Day" parent="." instance=ExtResource("1_stwdr")]
+
+[node name="HUD" parent="." instance=ExtResource("2_5pu7c")]

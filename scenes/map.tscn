@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bob6kppcchqmu"]
+
+[ext_resource type="Texture2D" uid="uid://xuvpty4lj7w0" path="res://art/maps/day.jpg" id="1_5dwd1"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, 24)
+texture = ExtResource("1_5dwd1")
+centered = false

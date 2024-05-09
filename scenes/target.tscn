@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gic52v4hlmeu"]
+
+[ext_resource type="Script" path="res://scenes/target.gd" id="1_m1yvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ni7y"]
+size = Vector2(68, 52.9404)
+
+[node name="Target" type="Area2D"]
+script = ExtResource("1_m1yvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(163, 304)
+scale = Vector2(1, 15.44)
+shape = SubResource("RectangleShape2D_6ni7y")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="target_reached" from="." to="." method="_on_target_reached"]

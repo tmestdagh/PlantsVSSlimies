@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://45tccxis6no"]
+
+[ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="1_6g7lm"]
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_vndul"]
+[ext_resource type="Script" path="res://scenes/StartButton.gd" id="2_ebk0y"]
+[ext_resource type="Script" path="res://scenes/MessageLabel.gd" id="2_kjkql"]
+[ext_resource type="Script" path="res://scenes/ScoreContainer.gd" id="4_2xua3"]
+[ext_resource type="PackedScene" uid="uid://pkyl4kl3albe" path="res://scenes/inventory.tscn" id="5_4n2b1"]
+[ext_resource type="PackedScene" uid="uid://crohombivribl" path="res://scenes/grid_map.tscn" id="6_yys7m"]
+[ext_resource type="PackedScene" uid="uid://gic52v4hlmeu" path="res://scenes/target.tscn" id="8_deyra"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_vndul")
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -128.0
+offset_right = 157.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Get Ready!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_kjkql")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -72.5
+offset_right = 121.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Start"
+script = ExtResource("2_ebk0y")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
+offset_left = 51.0
+offset_top = 19.0
+offset_right = 126.0
+offset_bottom = 59.0
+script = ExtResource("4_2xua3")
+
+[node name="ScoreLabel" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+text = "Sols"
+
+[node name="ScoreValue" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("1_6g7lm")
+
+[node name="Inventory" parent="." instance=ExtResource("5_4n2b1")]
+offset_left = -486.0
+offset_top = -4.0
+offset_right = -193.0
+offset_bottom = 91.0
+
+[node name="GridMap" parent="." instance=ExtResource("6_yys7m")]
+
+[node name="GameOverTarget" parent="." instance=ExtResource("8_deyra")]
+
+[node name="Waves" type="Node2D" parent="."]
+
+[node name="Wave1" parent="Waves" instance=ExtResource("6_yys7m")]
+offset_left = 1166.0
+offset_right = 2152.0
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="start_game" from="StartButton" to="." method="_on_start_button_start_game"]
+[connection signal="start_game" from="StartButton" to="StartButton" method="_on_start_game"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="item_select" from="Inventory" to="." method="_on_inventory_item_select"]
+[connection signal="item_select" from="Inventory" to="GridMap" method="_on_inventory_item_select"]
+[connection signal="grid_item_action" from="GridMap" to="." method="_on_grid_map_grid_item_action"]
+[connection signal="grid_item_action" from="Waves/Wave1" to="." method="_on_grid_map_grid_item_action"]

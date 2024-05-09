@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdtuh742dbcbo"]
+
+[ext_resource type="Script" path="res://scenes/grid_item.gd" id="1_syh3q"]
+
+[node name="GridItem" type="Control"]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_syh3q")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.258824)
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

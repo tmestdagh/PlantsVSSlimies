@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://d32aurulww1cf"]
+
+[node name="Slime" type="Area2D"]
+metadata/_edit_group_ = true
