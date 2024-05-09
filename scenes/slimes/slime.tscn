@@ -4,21 +4,25 @@
 [ext_resource type="Script" path="res://scenes/slimes/slime.gd" id="1_wyugy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajivx"]
-size = Vector2(335.5, 227.5)
+size = Vector2(93.4375, 46.875)
 
 [node name="Slime" type="Area2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wyugy")
 bite_size = 20
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6hm3f")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.75, 0.25)
+position = Vector2(41, 50)
 shape = SubResource("RectangleShape2D_ajivx")
 
 [node name="EatingPace" type="Timer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(95, 95)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6hm3f")
+expand_mode = 3
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="plant_detected" from="." to="." method="_on_plant_detected"]
 [connection signal="timeout" from="EatingPace" to="." method="_on_eating_pace_timeout"]

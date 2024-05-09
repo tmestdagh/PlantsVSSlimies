@@ -29,7 +29,6 @@ func _on_start_button_start_game():
 func _on_message_timer_timeout():
 	$MessageLabel.hide()
 
-
 func _on_inventory_item_select(type):
 	Gameplay.currentInventoryItem = type
 
@@ -37,7 +36,6 @@ func _on_grid_map_grid_item_action(grid_item):
 	print("HUD#_on_grid_map_grid_item_action ", grid_item)
 	EventBus.grid_item_selected.emit(grid_item)
 
-	
 func disable_and_hide_node(node:Node) -> void:
 	node.process_mode = 4 # = Mode: Disabled
 	node.hide()
@@ -62,3 +60,8 @@ func _on_gameover():
 	print("GAME OVER")
 	show_message("GAME OVER")
 	queue_free()
+
+
+func _on_new_inventory_card_selected(card: Card):
+	print("HUD#inventory_card_selected %s" % card.plant)
+	EventBus.plant_selected.emit(card.plant)

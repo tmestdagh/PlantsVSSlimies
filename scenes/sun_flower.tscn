@@ -4,15 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://cer4y1dk8r5bj" path="res://art/plants/sunflower.jpg" id="2_r3jq1"]
 [ext_resource type="Script" path="res://scenes/sun_flower.gd" id="3_ak20t"]
 
-[node name="SunFlower" instance=ExtResource("1_usu7n")]
-texture = ExtResource("2_r3jq1")
+[node name="SunFlower" node_paths=PackedStringArray("asset") instance=ExtResource("1_usu7n")]
+custom_minimum_size = Vector2(0, 0)
 script = ExtResource("3_ak20t")
 type = "sun_flower"
 cost = 50
 cooldown = 1
+asset = NodePath("TextureRect")
 
 [node name="Timer" type="Timer" parent="." index="0"]
 wait_time = 10.0
+
+[node name="TextureRect" type="TextureRect" parent="." index="2"]
+layout_mode = 0
+offset_right = 95.0
+offset_bottom = 95.0
+texture = ExtResource("2_r3jq1")
+expand_mode = 1
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="ready" from="Timer" to="." method="_on_timer_ready"]

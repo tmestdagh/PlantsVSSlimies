@@ -8,7 +8,6 @@ func _on_timer_ready():
 		$Timer.wait_time = cooldown
 		$Timer.start()
 
-
 func _on_timer_timeout():
 	print("SLIME SPAWN ")
 	EventBus.emit_signal("spawn_slime", global_position)

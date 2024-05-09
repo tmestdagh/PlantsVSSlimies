@@ -17,6 +17,11 @@ func setup_signals():
 	EventBus.grid_item_selected.connect(_on_grid_item_selected)
 	EventBus.sale.connect(_on_sale)
 	EventBus.plant.connect(_on_plant)
+	EventBus.plant_selected.connect(_on_plant_selected)
+	
+func _on_plant_selected(plant: Cell):
+	print("Gameplay#on_plant_selected %s" % plant)
+	currentInventoryItem = plant
 	
 func _on_sun_flower_sunshine():
 	print("Gameplay#Sunshine")

@@ -8,12 +8,17 @@ var velocity : int = 0
 var moving : bool = false
 var plant
 
+signal plant_detected(plant: Cell)
 signal eat(plant, bite_size)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = speed * direction
 	moving = true
+	
+#func setup_signals():
+	#print("Slime#setup_signals")
+	#plant_detected.connect(_on_plant_detected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -25,9 +30,13 @@ func move(distance):
 	position.x += distance
 
 func _on_area_entered(area):
-	stop_moving_and_start_eating(area.get_parent())
+	plant_detected.emit(area.get_parent())
 	
-func stop_moving_and_start_eating(_plant):
+func _on_plant_detected(plant: Cell):
+	print("Slime#on_plant_detected %s" % plant)
+	stop_moving_and_start_eating(plant)
+	
+func stop_moving_and_start_eating(_plant: Cell):
 	plant = _plant
 	print("Slime#stop_moving_and_start_eating %s" % plant)
 	# stop

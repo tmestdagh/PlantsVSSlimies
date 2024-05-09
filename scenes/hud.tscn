@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://45tccxis6no"]
+[gd_scene load_steps=10 format=3 uid="uid://45tccxis6no"]
 
 [ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="1_6g7lm"]
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_vndul"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://pkyl4kl3albe" path="res://scenes/inventory.tscn" id="5_4n2b1"]
 [ext_resource type="PackedScene" uid="uid://crohombivribl" path="res://scenes/grid_map.tscn" id="6_yys7m"]
 [ext_resource type="PackedScene" uid="uid://gic52v4hlmeu" path="res://scenes/target.tscn" id="8_deyra"]
+[ext_resource type="PackedScene" uid="uid://panhvgo8pdae" path="res://scenes/inventory/inventory.tscn" id="9_5fmir"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vndul")
@@ -82,6 +83,9 @@ offset_bottom = 91.0
 offset_left = 1166.0
 offset_right = 2152.0
 
+[node name="NewInventory" parent="." instance=ExtResource("9_5fmir")]
+position = Vector2(597, 22)
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
 [connection signal="start_game" from="StartButton" to="." method="_on_start_button_start_game"]
 [connection signal="start_game" from="StartButton" to="StartButton" method="_on_start_game"]
@@ -90,3 +94,4 @@ offset_right = 2152.0
 [connection signal="item_select" from="Inventory" to="GridMap" method="_on_inventory_item_select"]
 [connection signal="grid_item_action" from="GridMap" to="." method="_on_grid_map_grid_item_action"]
 [connection signal="grid_item_action" from="Waves/Wave1" to="." method="_on_grid_map_grid_item_action"]
+[connection signal="card_selected" from="NewInventory" to="." method="_on_new_inventory_card_selected"]

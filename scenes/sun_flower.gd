@@ -9,7 +9,7 @@ func _on_timer_timeout():
 func _on_ready():
 	print("SUNFLOWER cost=%d cooldown=%d" % [cost, cooldown])
 	if(cooldown > -1):
-		$Timer.wait_time = cooldown
+		$Timer.wait_time = 10
 		$Timer.start()
 
 func _on_area_2d_area_entered(area):
