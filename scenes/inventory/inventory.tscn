@@ -1,31 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://panhvgo8pdae"]
+[gd_scene load_steps=2 format=3 uid="uid://panhvgo8pdae"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory.gd" id="1_mm66h"]
-[ext_resource type="PackedScene" uid="uid://ojd3j66ho60f" path="res://scenes/card.tscn" id="2_yotn2"]
-[ext_resource type="PackedScene" uid="uid://c6qj3u8pbf2cs" path="res://scenes/sun_flower.tscn" id="3_x6wlf"]
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource("1_mm66h")
 
-[node name="Cards" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Card" parent="Cards" node_paths=PackedStringArray("plant") instance=ExtResource("2_yotn2")]
-layout_mode = 2
-plant = NodePath("SunFlower")
-
-[node name="SunFlower" parent="Cards/Card" instance=ExtResource("3_x6wlf")]
-layout_mode = 1
-offset_right = 2.5
-offset_bottom = 2.5
-
-[node name="Card2" parent="Cards" instance=ExtResource("2_yotn2")]
-layout_mode = 2
-
-[node name="SunFlower" parent="Cards/Card2" instance=ExtResource("3_x6wlf")]
-layout_mode = 1
-
 [connection signal="card_selected" from="." to="." method="_on_card_selected"]
-[connection signal="card_pressed" from="Cards/Card" to="." method="_on_card_pressed"]
-[connection signal="card_pressed" from="Cards/Card2" to="." method="_on_card_pressed"]

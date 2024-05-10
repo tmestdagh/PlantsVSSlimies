@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://45tccxis6no"]
+[gd_scene load_steps=15 format=3 uid="uid://45tccxis6no"]
 
 [ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="1_6g7lm"]
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_vndul"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://crohombivribl" path="res://scenes/grid_map.tscn" id="6_yys7m"]
 [ext_resource type="PackedScene" uid="uid://gic52v4hlmeu" path="res://scenes/target.tscn" id="8_deyra"]
 [ext_resource type="PackedScene" uid="uid://panhvgo8pdae" path="res://scenes/inventory/inventory.tscn" id="9_5fmir"]
+[ext_resource type="PackedScene" uid="uid://b6nklqi3kdwm" path="res://scenes/wave_controller.tscn" id="9_o24bq"]
+[ext_resource type="PackedScene" uid="uid://ojd3j66ho60f" path="res://scenes/card.tscn" id="10_117ob"]
+[ext_resource type="Script" path="res://scenes/wave.gd" id="10_f20q6"]
+[ext_resource type="PackedScene" uid="uid://c6qj3u8pbf2cs" path="res://scenes/sun_flower.tscn" id="11_4ahhm"]
+[ext_resource type="PackedScene" uid="uid://bdtuh742dbcbo" path="res://scenes/grid_item.tscn" id="11_naxii"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vndul")
@@ -74,17 +79,229 @@ offset_right = -193.0
 offset_bottom = 91.0
 
 [node name="GridMap" parent="." instance=ExtResource("6_yys7m")]
+offset_right = 1136.0
+offset_bottom = 595.0
 
 [node name="GameOverTarget" parent="." instance=ExtResource("8_deyra")]
 
-[node name="Waves" type="Node2D" parent="."]
+[node name="WaveController" parent="." instance=ExtResource("9_o24bq")]
+offset_left = 1150.0
+offset_top = 100.0
+offset_right = 5106.0
+offset_bottom = 591.0
 
-[node name="Wave1" parent="Waves" instance=ExtResource("6_yys7m")]
-offset_left = 1166.0
-offset_right = 2152.0
+[node name="Wave" type="GridContainer" parent="WaveController"]
+layout_mode = 2
+columns = 10
+script = ExtResource("10_f20q6")
+
+[node name="GridColumn" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="Card" parent="WaveController/Wave/GridColumn/GridItem2" node_paths=PackedStringArray("plant") instance=ExtResource("10_117ob")]
+layout_mode = 2
+plant = NodePath("SunFlower")
+
+[node name="SunFlower" parent="WaveController/Wave/GridColumn/GridItem2/Card" instance=ExtResource("11_4ahhm")]
+layout_mode = 1
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn2" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn2" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn2" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn2" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn2" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn2" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn3" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn3" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn3" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn3" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn3" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn3" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn4" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn4" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn4" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn4" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn4" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn4" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn5" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn5" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn5" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn5" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn5" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn5" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn6" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn6" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn6" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn6" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn6" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn6" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn7" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn7" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn7" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn7" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn7" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn7" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn8" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn8" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn8" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn8" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn8" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn8" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn9" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn9" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn9" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn9" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn9" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn9" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridColumn10" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn10" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn10" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn10" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn10" instance=ExtResource("11_naxii")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn10" instance=ExtResource("11_naxii")]
+layout_mode = 2
 
 [node name="NewInventory" parent="." instance=ExtResource("9_5fmir")]
 position = Vector2(597, 22)
+
+[node name="Cards" type="HBoxContainer" parent="NewInventory"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Card" parent="NewInventory/Cards" instance=ExtResource("10_117ob")]
+layout_mode = 2
+
+[node name="SunFlower" parent="NewInventory/Cards/Card" instance=ExtResource("11_4ahhm")]
+layout_mode = 1
+offset_right = 2.5
+offset_bottom = 2.5
+
+[node name="Card2" parent="NewInventory/Cards" instance=ExtResource("10_117ob")]
+layout_mode = 2
+
+[node name="SunFlower" parent="NewInventory/Cards/Card2" instance=ExtResource("11_4ahhm")]
+layout_mode = 1
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
 [connection signal="start_game" from="StartButton" to="." method="_on_start_button_start_game"]
@@ -93,5 +310,61 @@ position = Vector2(597, 22)
 [connection signal="item_select" from="Inventory" to="." method="_on_inventory_item_select"]
 [connection signal="item_select" from="Inventory" to="GridMap" method="_on_inventory_item_select"]
 [connection signal="grid_item_action" from="GridMap" to="." method="_on_grid_map_grid_item_action"]
-[connection signal="grid_item_action" from="Waves/Wave1" to="." method="_on_grid_map_grid_item_action"]
+[connection signal="moved_to_step" from="WaveController/Wave" to="WaveController/Wave" method="_on_moved_to_step"]
+[connection signal="wave_started" from="WaveController/Wave" to="." method="_on_wave_started"]
+[connection signal="wave_started" from="WaveController/Wave" to="WaveController" method="_on_wave_started"]
+[connection signal="wave_started" from="WaveController/Wave" to="WaveController/Wave" method="_on_wave_started"]
+[connection signal="selected" from="WaveController/Wave/GridColumn/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="spawn_entity" from="WaveController/Wave/GridColumn/GridItem2/Card" to="WaveController" method="_on_card_spawn_entity"]
+[connection signal="selected" from="WaveController/Wave/GridColumn/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn2/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn2/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn2/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn2/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn2/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn3/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn3/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn3/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn3/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn3/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn4/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn4/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn4/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn4/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn4/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn5/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn5/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn5/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn5/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn5/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn6/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn6/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn6/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn6/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn6/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn7/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn7/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn7/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn7/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn7/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn8/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn8/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn8/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn8/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn8/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn9/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn9/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn9/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn9/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn9/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn10/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn10/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn10/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn10/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
+[connection signal="selected" from="WaveController/Wave/GridColumn10/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
 [connection signal="card_selected" from="NewInventory" to="." method="_on_new_inventory_card_selected"]
+[connection signal="card_pressed" from="NewInventory/Cards/Card" to="NewInventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="NewInventory/Cards/Card2" to="NewInventory" method="_on_card_pressed"]

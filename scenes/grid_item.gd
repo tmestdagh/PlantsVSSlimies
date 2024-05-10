@@ -1,8 +1,9 @@
-extends Control
+class_name GridItem extends Control
 
 signal selected
 
-@onready var GridItem : Control = get_node(".")
+#@onready var GridItem : Control = get_node(".")
+@onready var card : Card = get_node("./Card")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,4 @@ func _process(delta):
 
 func _on_button_pressed():
 	print("GridItem clicked")
-	print("Current ", GridItem)
-	if GridItem:
-		print("Emitting selected")
-		selected.emit(GridItem)
+	selected.emit(self)

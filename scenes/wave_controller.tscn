@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6nklqi3kdwm"]
+
+[ext_resource type="Script" path="res://scenes/wave_controller.gd" id="1_xq0sy"]
+
+[node name="WaveController" type="HBoxContainer"]
+offset_left = 1172.0
+offset_top = 99.0
+offset_right = 3148.0
+offset_bottom = 590.0
+script = ExtResource("1_xq0sy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

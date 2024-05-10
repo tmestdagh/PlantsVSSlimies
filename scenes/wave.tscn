@@ -1,0 +1,243 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvkgrw4b281o0"]
+
+[ext_resource type="Script" path="res://scenes/wave.gd" id="1_i7bdv"]
+[ext_resource type="PackedScene" uid="uid://bdtuh742dbcbo" path="res://scenes/grid_item.tscn" id="2_3eiju"]
+
+[node name="Wave" type="GridContainer"]
+offset_left = 150.0
+offset_top = 100.0
+offset_right = 245.0
+offset_bottom = 591.0
+columns = 10
+script = ExtResource("1_i7bdv")
+
+[node name="GridColumn" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn2" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn2" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn2" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn2" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn2" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn3" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn3" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn3" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn3" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn3" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn3" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn4" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn4" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn4" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn4" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn4" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn4" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn5" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn5" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn5" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn5" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn5" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn5" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn6" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn6" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn6" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn6" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn6" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn6" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn7" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn7" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn7" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn7" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn7" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn7" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn8" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn8" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn8" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn8" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn8" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn8" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn9" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn9" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn9" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn9" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn9" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn9" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridColumn10" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridItem" parent="GridColumn10" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridColumn10" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridColumn10" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridColumn10" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridColumn10" instance=ExtResource("2_3eiju")]
+layout_mode = 2
+
+[connection signal="selected" from="GridColumn/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn2/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn2/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn2/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn2/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn2/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn3/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn3/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn3/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn3/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn3/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn4/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn4/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn4/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn4/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn4/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn5/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn5/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn5/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn5/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn5/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn6/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn6/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn6/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn6/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn6/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn7/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn7/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn7/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn7/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn7/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn8/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn8/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn8/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn8/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn8/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn9/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn9/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn9/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn9/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn9/GridItem5" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn10/GridItem" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn10/GridItem2" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn10/GridItem3" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn10/GridItem4" to="." method="_on_grid_item_selected"]
+[connection signal="selected" from="GridColumn10/GridItem5" to="." method="_on_grid_item_selected"]

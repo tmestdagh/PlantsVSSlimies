@@ -10,7 +10,7 @@ func _ready():
 	# Hide everything except the start button
 	disable_and_hide_node($GridMap)
 	disable_and_hide_node($Inventory)
-	disable_and_hide_node(($Waves))
+	disable_and_hide_node(($WaveController))
 	$ScoreContainer.setValue(Gameplay.currentSols)
 	# Connect the EventBus signals
 	EventBus.connect("gameover", _on_gameover)
@@ -24,7 +24,8 @@ func _on_start_button_start_game():
 	$StartButton.hide()
 	enable_and_show_node($GridMap)
 	enable_and_show_node($Inventory)
-	enable_and_show_node(($Waves))
+	enable_and_show_node(($WaveController))
+	$WaveController.start()
 
 func _on_message_timer_timeout():
 	$MessageLabel.hide()
@@ -61,7 +62,10 @@ func _on_gameover():
 	show_message("GAME OVER")
 	queue_free()
 
-
 func _on_new_inventory_card_selected(card: Card):
 	print("HUD#inventory_card_selected %s" % card.plant)
 	EventBus.plant_selected.emit(card.plant)
+
+
+func _on_wave_started(wave):
+	print("HUD#Wave %s started" % wave)

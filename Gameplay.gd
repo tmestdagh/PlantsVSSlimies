@@ -4,6 +4,8 @@ var currentSols : int = 50
 var currentInventoryItem : Object
 
 const Sol : Resource = preload("res://scenes/sol.tscn")
+const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
+const SunFlowerScene : Resource = preload("res://scenes/sun_flower.tscn")
 
 func _ready():
 	print("Gameplay is ready to start")
@@ -18,6 +20,18 @@ func setup_signals():
 	EventBus.sale.connect(_on_sale)
 	EventBus.plant.connect(_on_plant)
 	EventBus.plant_selected.connect(_on_plant_selected)
+	EventBus.spawn_entity.connect(_on_spawn_entity)
+	
+func _on_spawn_entity(card: Card):
+	print("Gameplay#on_spawn_entity %s" % card)
+	var slime = SlimeScene.instantiate()
+	#var slime: Cell = card.plant.duplicate()
+	slime.position = card.global_position
+	slime.z_index = 10
+	print(slime)
+	add_child(slime)
+	#slime.show()
+	print("Entity %s added" % card.plant)
 	
 func _on_plant_selected(plant: Cell):
 	print("Gameplay#on_plant_selected %s" % plant)
@@ -43,6 +57,7 @@ func _on_grid_item_selected(grid_item):
 		
 		if buy(currentInventoryItem):
 			EventBus.plant.emit(grid_item, currentInventoryItem)
+			print("Planted yoooo %s" % grid_item)
 
 func buy(inventoryItem):
 	print("Buying ", inventoryItem)
@@ -57,7 +72,7 @@ func _on_sale(itemType, sols):
 	print("Plant sold ", itemType, sols)
 	updateCurrentSols(-1 * sols)
 	
-func _on_plant(_gridItem: Control, _currentInventoryItem: Node):
+func _on_plant(_gridItem, _currentInventoryItem):
 	print("Planting ", _currentInventoryItem, " on ", _gridItem)
 	var SceneToInstantiate = load(_currentInventoryItem.scene_file_path)
 	var instance = SceneToInstantiate.instantiate()

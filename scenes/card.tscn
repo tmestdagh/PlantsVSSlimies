@@ -13,3 +13,4 @@ stretch_mode = 0
 script = ExtResource("1_cnqju")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="spawn_entity" from="." to="." method="_on_spawn_entity"]

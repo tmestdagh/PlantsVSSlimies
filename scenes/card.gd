@@ -3,6 +3,7 @@ class_name Card extends TextureButton
 @export var plant: Cell
 
 signal card_pressed(card: Card)
+signal spawn_entity(card: Card)
 
 func _ready():
 	print("Card#ready cell=%s" % plant)
@@ -23,8 +24,17 @@ func _ready():
 
 func get_plant():
 	var _children = find_children("","Cell")
-	return _children[0]
+	if !_children.is_empty():
+		return _children[0]
 
 
 func _on_pressed():
 	card_pressed.emit(self)
+
+func spawn():
+	print("Card#spawn_entity %s" % plant)
+	spawn_entity.emit(self)
+
+func _on_spawn_entity(card: Card):
+	print("Card#on_spawn_entity %s" % card)
+	queue_free()
