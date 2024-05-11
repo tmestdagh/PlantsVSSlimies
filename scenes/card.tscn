@@ -12,5 +12,9 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("1_cnqju")
 
+[node name="EntitySpawnTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="spawn_entity" from="." to="." method="_on_spawn_entity"]
+[connection signal="timeout" from="EntitySpawnTimer" to="." method="_on_entity_spawn_timer_timeout"]

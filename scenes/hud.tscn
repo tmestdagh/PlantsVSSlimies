@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://45tccxis6no"]
+[gd_scene load_steps=17 format=3 uid="uid://45tccxis6no"]
 
 [ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="1_6g7lm"]
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_vndul"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://scenes/wave.gd" id="10_f20q6"]
 [ext_resource type="PackedScene" uid="uid://c6qj3u8pbf2cs" path="res://scenes/sun_flower.tscn" id="11_4ahhm"]
 [ext_resource type="PackedScene" uid="uid://bdtuh742dbcbo" path="res://scenes/grid_item.tscn" id="11_naxii"]
+[ext_resource type="PackedScene" uid="uid://f140quubvkis" path="res://scenes/plants/sun_flower.tscn" id="15_4hoi5"]
+[ext_resource type="PackedScene" uid="uid://bs67li147m0ju" path="res://scenes/cards/sun_flower_card.tscn" id="16_4q437"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vndul")
@@ -104,15 +106,11 @@ layout_mode = 2
 [node name="GridItem2" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
 layout_mode = 2
 
-[node name="Card" parent="WaveController/Wave/GridColumn/GridItem2" node_paths=PackedStringArray("plant") instance=ExtResource("10_117ob")]
-layout_mode = 2
-plant = NodePath("SunFlower")
-
-[node name="SunFlower" parent="WaveController/Wave/GridColumn/GridItem2/Card" instance=ExtResource("11_4ahhm")]
-layout_mode = 1
-
 [node name="GridItem3" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
 layout_mode = 2
+
+[node name="SunFlowerCard" parent="WaveController/Wave/GridColumn/GridItem3" instance=ExtResource("16_4q437")]
+layout_mode = 0
 
 [node name="GridItem4" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
 layout_mode = 2
@@ -303,6 +301,13 @@ layout_mode = 2
 [node name="SunFlower" parent="NewInventory/Cards/Card2" instance=ExtResource("11_4ahhm")]
 layout_mode = 1
 
+[node name="SunFlowerCard" parent="NewInventory/Cards" instance=ExtResource("10_117ob")]
+layout_mode = 2
+entity = ExtResource("15_4hoi5")
+
+[node name="SunFlowerCard2" parent="NewInventory/Cards" instance=ExtResource("16_4q437")]
+layout_mode = 2
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
 [connection signal="start_game" from="StartButton" to="." method="_on_start_button_start_game"]
 [connection signal="start_game" from="StartButton" to="StartButton" method="_on_start_game"]
@@ -316,7 +321,6 @@ layout_mode = 1
 [connection signal="wave_started" from="WaveController/Wave" to="WaveController/Wave" method="_on_wave_started"]
 [connection signal="selected" from="WaveController/Wave/GridColumn/GridItem" to="WaveController/Wave" method="_on_grid_item_selected"]
 [connection signal="selected" from="WaveController/Wave/GridColumn/GridItem2" to="WaveController/Wave" method="_on_grid_item_selected"]
-[connection signal="spawn_entity" from="WaveController/Wave/GridColumn/GridItem2/Card" to="WaveController" method="_on_card_spawn_entity"]
 [connection signal="selected" from="WaveController/Wave/GridColumn/GridItem3" to="WaveController/Wave" method="_on_grid_item_selected"]
 [connection signal="selected" from="WaveController/Wave/GridColumn/GridItem4" to="WaveController/Wave" method="_on_grid_item_selected"]
 [connection signal="selected" from="WaveController/Wave/GridColumn/GridItem5" to="WaveController/Wave" method="_on_grid_item_selected"]
@@ -368,3 +372,5 @@ layout_mode = 1
 [connection signal="card_selected" from="NewInventory" to="." method="_on_new_inventory_card_selected"]
 [connection signal="card_pressed" from="NewInventory/Cards/Card" to="NewInventory" method="_on_card_pressed"]
 [connection signal="card_pressed" from="NewInventory/Cards/Card2" to="NewInventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="NewInventory/Cards/SunFlowerCard" to="NewInventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="NewInventory/Cards/SunFlowerCard2" to="NewInventory" method="_on_card_pressed"]

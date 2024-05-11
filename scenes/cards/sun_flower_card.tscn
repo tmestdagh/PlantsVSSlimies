@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs67li147m0ju"]
+
+[ext_resource type="PackedScene" uid="uid://ojd3j66ho60f" path="res://scenes/card.tscn" id="1_c3lpy"]
+[ext_resource type="PackedScene" uid="uid://f140quubvkis" path="res://scenes/plants/sun_flower.tscn" id="2_xu7n6"]
+
+[node name="SunFlowerCard" instance=ExtResource("1_c3lpy")]
+entity = ExtResource("2_xu7n6")
+cost = 50

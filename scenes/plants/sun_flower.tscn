@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://f140quubvkis"]
+
+[ext_resource type="PackedScene" uid="uid://ggbqhf8t2dn7" path="res://scenes/entity.tscn" id="1_t7fvd"]
+[ext_resource type="Texture2D" uid="uid://cer4y1dk8r5bj" path="res://art/plants/sunflower.jpg" id="2_68nen"]
+
+[node name="SunFlower" instance=ExtResource("1_t7fvd")]
+scale = Vector2(0.192098, 0.192098)
+
+[node name="Area2D" parent="." index="0"]
+scale = Vector2(0.592086, 0.592086)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(165.837, 193.426)
+scale = Vector2(1, 5.6)
+
+[node name="Sprite2D" parent="Area2D" index="1"]
+position = Vector2(0, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_68nen")
+centered = false

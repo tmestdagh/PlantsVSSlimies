@@ -1,6 +1,8 @@
 class_name Card extends TextureButton
 
 @export var plant: Cell
+@export var entity: PackedScene
+@export var cost: int = 0
 
 signal card_pressed(card: Card)
 signal spawn_entity(card: Card)
@@ -30,11 +32,20 @@ func get_plant():
 
 func _on_pressed():
 	card_pressed.emit(self)
-
+	
 func spawn():
-	print("Card#spawn_entity %s" % plant)
-	spawn_entity.emit(self)
+	print("Card#spawn wait_time=%d" % $EntitySpawnTimer.wait_time)
+	$EntitySpawnTimer.start()
+
+#func spawn():
+	#print("Card#spawn_entity %s" % plant)
+	#spawn_entity.emit(self)
 
 func _on_spawn_entity(card: Card):
 	print("Card#on_spawn_entity %s" % card)
 	queue_free()
+
+
+func _on_entity_spawn_timer_timeout():
+	print("Card#spawn_entity %s" % entity)
+	spawn_entity.emit(self)

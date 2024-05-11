@@ -2,6 +2,7 @@ extends Node
 
 var currentSols : int = 50
 var currentInventoryItem : Object
+var current_card: Card
 
 const Sol : Resource = preload("res://scenes/sol.tscn")
 const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
@@ -21,17 +22,31 @@ func setup_signals():
 	EventBus.plant.connect(_on_plant)
 	EventBus.plant_selected.connect(_on_plant_selected)
 	EventBus.spawn_entity.connect(_on_spawn_entity)
+	EventBus.inventory_card_selected.connect(_on_inventory_card_selected)
+	EventBus.play_card.connect(_on_play_card)
+	
+func _on_inventory_card_selected(card: Card):
+	print("Gameplay#on_inventory_card_selected %s" % card)	
+	current_card = card
 	
 func _on_spawn_entity(card: Card):
-	print("Gameplay#on_spawn_entity %s" % card)
-	var slime = SlimeScene.instantiate()
-	#var slime: Cell = card.plant.duplicate()
-	slime.position = card.global_position
-	slime.z_index = 10
-	print(slime)
-	add_child(slime)
-	#slime.show()
-	print("Entity %s added" % card.plant)
+	var entity = card.entity.instantiate()
+	print("Gameplay#on_spawn_entity %s" % entity)
+	entity.position = card.global_position
+	entity.z_index = 10
+	add_child(entity)
+	print("Entity %s added" % entity)
+	
+#func _on_spawn_entity(card: Card):
+	#print("Gameplay#on_spawn_entity %s" % card)
+	#var slime = SlimeScene.instantiate()
+	##var slime: Cell = card.plant.duplicate()
+	#slime.position = card.global_position
+	#slime.z_index = 10
+	#print(slime)
+	#add_child(slime)
+	##slime.show()
+	#print("Entity %s added" % card.plant)
 	
 func _on_plant_selected(plant: Cell):
 	print("Gameplay#on_plant_selected %s" % plant)
@@ -58,6 +73,20 @@ func _on_grid_item_selected(grid_item):
 		if buy(currentInventoryItem):
 			EventBus.plant.emit(grid_item, currentInventoryItem)
 			print("Planted yoooo %s" % grid_item)
+			
+	if current_card:
+		print("Current Card %s" % current_card)
+		
+		if buy(current_card):
+			EventBus.play_card.emit(current_card, grid_item)
+
+func _on_play_card(card: Card, location: GridItem):
+	print("Gameplay#on_play_card %s on %s" % [card, location])
+	var new_card: Card = card.duplicate()
+	new_card.size = location.size
+	new_card.spawn_entity.connect(_on_spawn_entity)
+	location.add_child(new_card)
+	new_card.spawn()
 
 func buy(inventoryItem):
 	print("Buying ", inventoryItem)
@@ -71,6 +100,12 @@ func buy(inventoryItem):
 func _on_sale(itemType, sols):
 	print("Plant sold ", itemType, sols)
 	updateCurrentSols(-1 * sols)
+	
+#func _on_plant(_gridItem, _currentInventoryItem: Card):
+	#print("Planting ", _currentInventoryItem, " on ", _gridItem)
+	#var card: Card = _currentInventoryItem.duplicate()
+	#card.size = _gridItem.size
+	#_gridItem.add_child(card)
 	
 func _on_plant(_gridItem, _currentInventoryItem):
 	print("Planting ", _currentInventoryItem, " on ", _gridItem)

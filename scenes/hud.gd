@@ -65,6 +65,7 @@ func _on_gameover():
 func _on_new_inventory_card_selected(card: Card):
 	print("HUD#inventory_card_selected %s" % card.plant)
 	EventBus.plant_selected.emit(card.plant)
+	EventBus.inventory_card_selected.emit(card)
 
 
 func _on_wave_started(wave):

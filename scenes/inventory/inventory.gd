@@ -9,5 +9,5 @@ func _on_card_pressed(card: Card):
 	card_selected.emit(card)
 
 func _on_card_selected(card: Card):
-	print("Inventory#card_selected %s plant=%s" % [card, card.plant])
+	print("Inventory#card_selected %s plant=%s entity=%s" % [card, card.plant, card.entity])
 	currentCard = card
