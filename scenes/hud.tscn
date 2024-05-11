@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://45tccxis6no"]
+[gd_scene load_steps=18 format=3 uid="uid://45tccxis6no"]
 
 [ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="1_6g7lm"]
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_vndul"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtuh742dbcbo" path="res://scenes/grid_item.tscn" id="11_naxii"]
 [ext_resource type="PackedScene" uid="uid://f140quubvkis" path="res://scenes/plants/sun_flower.tscn" id="15_4hoi5"]
 [ext_resource type="PackedScene" uid="uid://bs67li147m0ju" path="res://scenes/cards/sun_flower_card.tscn" id="16_4q437"]
+[ext_resource type="PackedScene" uid="uid://dvn2psjt0g6uh" path="res://scenes/cards/slime_card.tscn" id="17_5sk7l"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vndul")
@@ -308,6 +309,9 @@ entity = ExtResource("15_4hoi5")
 [node name="SunFlowerCard2" parent="NewInventory/Cards" instance=ExtResource("16_4q437")]
 layout_mode = 2
 
+[node name="SlimeCard" parent="NewInventory/Cards" instance=ExtResource("17_5sk7l")]
+layout_mode = 2
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
 [connection signal="start_game" from="StartButton" to="." method="_on_start_button_start_game"]
 [connection signal="start_game" from="StartButton" to="StartButton" method="_on_start_game"]
@@ -374,3 +378,4 @@ layout_mode = 2
 [connection signal="card_pressed" from="NewInventory/Cards/Card2" to="NewInventory" method="_on_card_pressed"]
 [connection signal="card_pressed" from="NewInventory/Cards/SunFlowerCard" to="NewInventory" method="_on_card_pressed"]
 [connection signal="card_pressed" from="NewInventory/Cards/SunFlowerCard2" to="NewInventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="NewInventory/Cards/SlimeCard" to="NewInventory" method="_on_card_pressed"]

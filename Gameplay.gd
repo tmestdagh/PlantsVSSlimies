@@ -35,7 +35,7 @@ func _on_spawn_entity(card: Card):
 	entity.position = card.global_position
 	entity.z_index = 10
 	add_child(entity)
-	print("Entity %s added" % entity)
+	print("Entity %s added hp=%d" % [entity, entity.health])
 	
 #func _on_spawn_entity(card: Card):
 	#print("Gameplay#on_spawn_entity %s" % card)

@@ -1,4 +1,5 @@
-class_name Slime extends Node2D
+class_name Slime
+extends Entity
 
 @export var speed : int = 10
 @export var direction: int = -1
