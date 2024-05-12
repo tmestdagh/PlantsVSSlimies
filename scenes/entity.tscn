@@ -20,3 +20,5 @@ shape = SubResource("RectangleShape2D_xoj2s")
 position = Vector2(638, 328)
 scale = Vector2(0.36875, 0.36875)
 texture = ExtResource("2_gjpin")
+
+[connection signal="dead" from="." to="." method="_on_dead"]
