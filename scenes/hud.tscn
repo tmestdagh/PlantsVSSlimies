@@ -104,6 +104,9 @@ layout_mode = 2
 [node name="GridItem" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
 layout_mode = 2
 
+[node name="SlimeCard" parent="WaveController/Wave/GridColumn/GridItem" instance=ExtResource("17_5sk7l")]
+layout_mode = 0
+
 [node name="GridItem2" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
 layout_mode = 2
 

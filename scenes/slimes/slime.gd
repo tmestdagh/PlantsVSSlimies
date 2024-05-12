@@ -11,6 +11,7 @@ var plant
 
 signal plant_detected(plant: Cell)
 signal eat(plant, bite_size)
+signal entity_detected(entity: Entity)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,12 +33,17 @@ func move(distance):
 
 func _on_area_entered(area):
 	plant_detected.emit(area.get_parent())
+	entity_detected.emit(area.get_parent())
 	
 func _on_plant_detected(plant: Cell):
 	print("Slime#on_plant_detected %s" % plant)
 	stop_moving_and_start_eating(plant)
 	
-func stop_moving_and_start_eating(_plant: Cell):
+func _on_entity_detected(entity: Entity):
+	print("Slime#on_entity_detected %s" % entity)
+	stop_moving_and_start_eating(entity)
+	
+func stop_moving_and_start_eating(_plant):
 	plant = _plant
 	print("Slime#stop_moving_and_start_eating %s" % plant)
 	# stop

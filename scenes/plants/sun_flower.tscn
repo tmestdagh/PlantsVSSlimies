@@ -12,10 +12,13 @@ script = ExtResource("2_13ly1")
 scale = Vector2(0.592086, 0.592086)
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(165.837, 193.426)
+position = Vector2(364.872, 422.021)
+scale = Vector2(1, 5.6)
 
 [node name="Sprite2D" parent="Area2D" index="1"]
 position = Vector2(0, 0)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_68nen")
 centered = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
