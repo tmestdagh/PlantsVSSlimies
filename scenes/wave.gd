@@ -39,7 +39,15 @@ func _on_moved_to_step(step):
 	print("Wave#moved_to_step %s" % step)
 	for item in step.find_children("", "GridItem"):
 		if item.card:
+			print("Wave#GridItem %s has Card %s" % [item, item.card])
+			item.card.spawn_entity.connect(_on_spawn_entity)
 			item.card.spawn()
+		else:
+			print("Wave#GridItem has no Card")
 	# TODO	
 	# Iterate over the GridItems
 	# and Spawn entities
+
+func _on_spawn_entity(card: Card):
+	print("Wave#on_spawn_entity %s" % card.entity)
+	EventBus.spawn_entity.emit(card)

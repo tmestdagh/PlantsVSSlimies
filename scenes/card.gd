@@ -1,4 +1,5 @@
-class_name Card extends TextureButton
+class_name Card
+extends TextureButton
 
 @export var plant: Cell
 @export var entity: PackedScene
@@ -10,6 +11,10 @@ signal spawn_entity(card: Card)
 func _ready():
 	print("Card#ready cell=%s" % plant)
 	print(get_children(false))
+	
+	#var host = get_node("../")
+	#if host.playable:
+		#host.card
 	
 	if !plant:
 		plant = get_plant()

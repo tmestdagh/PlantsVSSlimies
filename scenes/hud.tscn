@@ -101,8 +101,9 @@ script = ExtResource("10_f20q6")
 [node name="GridColumn" type="VBoxContainer" parent="WaveController/Wave"]
 layout_mode = 2
 
-[node name="GridItem" parent="WaveController/Wave/GridColumn" instance=ExtResource("11_naxii")]
+[node name="GridItem" parent="WaveController/Wave/GridColumn" node_paths=PackedStringArray("card") instance=ExtResource("11_naxii")]
 layout_mode = 2
+card = NodePath("SlimeCard")
 
 [node name="SlimeCard" parent="WaveController/Wave/GridColumn/GridItem" instance=ExtResource("17_5sk7l")]
 layout_mode = 0
