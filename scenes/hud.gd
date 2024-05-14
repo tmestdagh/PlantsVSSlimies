@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+# TODO	Rename HUD to Level
+
+
 func show_message(text):
 	$MessageLabel.text = text
 	$MessageLabel.show()
@@ -67,6 +70,9 @@ func _on_new_inventory_card_selected(card: Card):
 	EventBus.plant_selected.emit(card.plant)
 	EventBus.inventory_card_selected.emit(card)
 
-
 func _on_wave_started(wave):
 	print("HUD#Wave %s started" % wave)
+
+func _on_wave_ended(wave: Wave):
+	print("HUD#Wave Ended %s" % wave)
+	

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdau4hek8aqak"]
+
+[ext_resource type="Script" path="res://scenes/game_over_scene.gd" id="1_885pg"]
+[ext_resource type="Script" path="res://scenes/MessageLabel.gd" id="2_si5l8"]
+
+[node name="LevelCompletedScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_885pg")
+
+[node name="MessageLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -599.0
+offset_top = -437.0
+offset_right = -60.0
+offset_bottom = -354.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.21759, 2.42218)
+theme_override_font_sizes/font_size = 60
+text = "LEVEL COMPLETED"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_si5l8")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 500.0
+offset_right = 821.0
+offset_bottom = 591.0
+tooltip_text = "TRY AGAIN"
+theme_override_font_sizes/font_size = 60
+text = "TRY AGAIN"
+
+[connection signal="pressed" from="Button" to="." method="retry"]

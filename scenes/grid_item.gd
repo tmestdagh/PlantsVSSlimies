@@ -6,14 +6,19 @@ signal selected
 
 func _ready():
 	print("GridItem#ready")
-	var cards = get_cards()
-	print("Cards %s" % cards)
-	for c in get_children():
-		print("GridItem#c %s" % c)
+	
+	if !card:
+		#print("GridItem#card NOT found, trying to autoload")
+		
+		if get_child_count() > 0:
+			for c in get_children():
+				var _card := c as Card
+				if _card:
+					card = _card
+					
+	if card:				
+		print("GridItem#Card %s" % card)
 
 func _on_button_pressed():
 	print("GridItem clicked")
 	selected.emit(self)
-
-func get_cards():
-	find_children("","Card")

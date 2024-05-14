@@ -24,6 +24,7 @@ func setup_signals():
 	EventBus.spawn_entity.connect(_on_spawn_entity)
 	EventBus.inventory_card_selected.connect(_on_inventory_card_selected)
 	EventBus.play_card.connect(_on_play_card)
+	EventBus.level_completed.connect(_on_level_completed)
 	
 func _on_inventory_card_selected(card: Card):
 	print("Gameplay#on_inventory_card_selected %s" % card)	
@@ -116,6 +117,11 @@ func _on_plant(_gridItem, _currentInventoryItem):
 func updateCurrentSols(_sols):
 	currentSols += _sols
 	EventBus.sols_update.emit(currentSols)
+	
+func _on_level_completed():
+	print("Gameplay#on_level_completed")
+	load_scene(load("res://scenes/level_completed_scene.tscn"))
+	# Show 
 
 func _on_gameover():
 	print("Gameplay#GAME OVER")

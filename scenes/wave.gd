@@ -6,6 +6,7 @@ var current_step
 
 signal grid_item_action
 signal wave_started(wave: Wave)
+signal wave_ended(wave: Wave)
 signal moved_to_step(column)
 
 var cellType: Object
@@ -44,10 +45,17 @@ func _on_moved_to_step(step):
 			item.card.spawn()
 		else:
 			print("Wave#GridItem has no Card")
-	# TODO	
-	# Iterate over the GridItems
-	# and Spawn entities
+	
+	$StepTimer.start()
 
 func _on_spawn_entity(card: Card):
 	print("Wave#on_spawn_entity %s" % card.entity)
 	EventBus.spawn_entity.emit(card)
+
+
+func _on_step_timer_timeout():
+	# TODO	Move to next step
+	if step_index +1 < steps.size():
+		set_current_step(step_index +1)
+	else:
+		wave_ended.emit(self)

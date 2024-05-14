@@ -12,6 +12,8 @@ signal plant_selected(plant)
 
 signal set_current_wave(wave: Wave)
 
+signal level_completed
+
 signal spawn_entity(card: Card)
 
 signal inventory_card_selected(card: Card)
