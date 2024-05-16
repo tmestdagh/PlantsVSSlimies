@@ -43,8 +43,6 @@ func _on_moved_to_step(step):
 			print("Wave#GridItem %s has Card %s" % [item, item.card])
 			item.card.spawn_entity.connect(_on_spawn_entity)
 			item.card.spawn()
-		else:
-			print("Wave#GridItem has no Card")
 	
 	$StepTimer.start()
 

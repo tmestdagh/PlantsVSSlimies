@@ -4,9 +4,9 @@ extends CanvasLayer
 
 
 func show_message(text):
-	$MessageLabel.text = text
-	$MessageLabel.show()
-	$MessageTimer.start()
+	$HUD/MessageLabel.text = text
+	$HUD/MessageLabel.show()
+	$HUD/MessageTimer.start()
 	
 func _ready():
 	print("Loading HUD")
@@ -14,7 +14,7 @@ func _ready():
 	disable_and_hide_node($GridMap)
 	disable_and_hide_node($Inventory)
 	disable_and_hide_node(($WaveController))
-	$ScoreContainer.setValue(Gameplay.currentSols)
+	$HUD/ScoreContainer.setValue(Gameplay.currentSols)
 	# Connect the EventBus signals
 	EventBus.connect("gameover", _on_gameover)
 	EventBus.connect("spawn_slime", _on_slime_spawn)
@@ -24,14 +24,14 @@ func _ready():
 func _on_start_button_start_game():
 	print("signal -> start_game -> HUD")
 	show_message("Yiiiiihaaaa")
-	$StartButton.hide()
+	$HUD/StartButton.hide()
 	enable_and_show_node($GridMap)
 	enable_and_show_node($Inventory)
 	enable_and_show_node(($WaveController))
 	$WaveController.start()
 
 func _on_message_timer_timeout():
-	$MessageLabel.hide()
+	$HUD/MessageLabel.hide()
 
 func _on_inventory_item_select(type):
 	Gameplay.currentInventoryItem = type
@@ -50,7 +50,7 @@ func enable_and_show_node(node:Node) -> void:
 	
 func _on_sols_update(_sols):
 	print("HUD#on_sols_update %d" % _sols)
-	$ScoreContainer.setValue(_sols)
+	$HUD/ScoreContainer.setValue(_sols)
 	
 func _on_slime_spawn(_position):
 	print("HUD#on_slime_spawn")

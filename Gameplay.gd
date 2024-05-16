@@ -6,7 +6,6 @@ var current_card: Card
 
 const Sol : Resource = preload("res://scenes/sol.tscn")
 const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
-const SunFlowerScene : Resource = preload("res://scenes/sun_flower.tscn")
 
 func _ready():
 	print("Gameplay is ready to start")
