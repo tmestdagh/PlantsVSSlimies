@@ -8,6 +8,7 @@
 [node name="SunFlower" instance=ExtResource("1_t7fvd")]
 scale = Vector2(0.192098, 0.192098)
 script = ExtResource("2_13ly1")
+metadata/type = "Plant"
 
 [node name="Area2D" parent="." index="0"]
 scale = Vector2(0.592086, 0.592086)

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 # TODO	Rename HUD to Level
+
 func show_message(text):
 	$HUD/MessageLabel.text = text
 	$HUD/MessageLabel.show()
@@ -37,14 +38,6 @@ func _on_inventory_item_select(type):
 func _on_grid_map_grid_item_action(grid_item):
 	print("HUD#_on_grid_map_grid_item_action ", grid_item)
 	EventBus.grid_item_selected.emit(grid_item)
-
-func disable_and_hide_node(node:Node) -> void:
-	node.process_mode = 4 # = Mode: Disabled
-	node.hide()
-
-func enable_and_show_node(node:Node) -> void:
-	node.process_mode = 0 # = Mode: Inherit
-	node.show()
 	
 func _on_sols_update(_sols):
 	print("HUD#on_sols_update %d" % _sols)

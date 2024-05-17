@@ -1,0 +1,321 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctsps682dvg7k"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_cplmr"]
+[ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="2_8k0c3"]
+[ext_resource type="Script" path="res://scenes/ScoreContainer.gd" id="3_ciam8"]
+[ext_resource type="Script" path="res://scenes/MessageLabel.gd" id="4_go5eh"]
+[ext_resource type="Script" path="res://scenes/StartButton.gd" id="5_cag3a"]
+[ext_resource type="Script" path="res://scenes/debug_view.gd" id="6_ah74o"]
+[ext_resource type="PackedScene" uid="uid://crohombivribl" path="res://scenes/grid_map.tscn" id="6_c43t3"]
+[ext_resource type="PackedScene" uid="uid://b6nklqi3kdwm" path="res://scenes/wave_controller.tscn" id="7_ytccg"]
+[ext_resource type="PackedScene" uid="uid://cvkgrw4b281o0" path="res://scenes/wave.tscn" id="8_va5lt"]
+[ext_resource type="PackedScene" uid="uid://bdtuh742dbcbo" path="res://scenes/grid_item.tscn" id="9_frt8h"]
+[ext_resource type="PackedScene" uid="uid://dvn2psjt0g6uh" path="res://scenes/cards/slime_card.tscn" id="10_lobfh"]
+[ext_resource type="PackedScene" uid="uid://bs67li147m0ju" path="res://scenes/cards/sun_flower_card.tscn" id="11_mw044"]
+[ext_resource type="PackedScene" uid="uid://panhvgo8pdae" path="res://scenes/inventory/inventory.tscn" id="12_wgqxx"]
+[ext_resource type="PackedScene" uid="uid://gic52v4hlmeu" path="res://scenes/target.tscn" id="13_q0nrc"]
+
+[node name="Level" type="CanvasLayer"]
+script = ExtResource("1_cplmr")
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="MessageTimer" type="Timer" parent="HUD"]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("2_8k0c3")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="HUD"]
+offset_left = 51.0
+offset_top = 19.0
+offset_right = 126.0
+offset_bottom = 59.0
+script = ExtResource("3_ciam8")
+
+[node name="ScoreLabel" type="Label" parent="HUD/ScoreContainer"]
+layout_mode = 2
+text = "Sols"
+
+[node name="ScoreValue" type="Label" parent="HUD/ScoreContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="MessageLabel" type="Label" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 544.0
+offset_top = 520.0
+offset_right = 857.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Get Ready!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_go5eh")
+
+[node name="StartButton" type="Button" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 579.0
+offset_top = 251.5
+offset_right = 821.0
+offset_bottom = 396.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Start"
+script = ExtResource("5_cag3a")
+
+[node name="DebugView" type="Node2D" parent="HUD"]
+script = ExtResource("6_ah74o")
+
+[node name="EntitiesInPlayLabel" type="Label" parent="HUD/DebugView"]
+offset_left = 1340.0
+offset_top = 17.0
+offset_right = 1419.0
+offset_bottom = 72.0
+scale = Vector2(0.589411, 0.589411)
+theme_override_font_sizes/font_size = 40
+text = "0 - 0"
+
+[node name="GridMap" parent="." instance=ExtResource("6_c43t3")]
+offset_right = 1136.0
+offset_bottom = 595.0
+
+[node name="WaveController" parent="." instance=ExtResource("7_ytccg")]
+offset_left = 1150.0
+offset_top = 100.0
+offset_right = 5106.0
+offset_bottom = 591.0
+
+[node name="Wave" parent="WaveController" instance=ExtResource("8_va5lt")]
+layout_mode = 2
+
+[node name="GridColumn" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="SlimeCard" parent="WaveController/Wave/GridColumn/GridItem" instance=ExtResource("10_lobfh")]
+layout_mode = 0
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="SunFlowerCard" parent="WaveController/Wave/GridColumn/GridItem2" instance=ExtResource("11_mw044")]
+layout_mode = 0
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn2" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn2" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn2" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn2" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="SlimeCard" parent="WaveController/Wave/GridColumn2/GridItem3" instance=ExtResource("10_lobfh")]
+layout_mode = 0
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn2" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn2" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn3" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn3" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="SlimeCard" parent="WaveController/Wave/GridColumn3/GridItem" instance=ExtResource("10_lobfh")]
+layout_mode = 0
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn3" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn3" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn3" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn3" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn4" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn4" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn4" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn4" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn4" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn4" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn5" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn5" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn5" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn5" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn5" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn5" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn6" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn6" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn6" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn6" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn6" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn6" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn7" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn7" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn7" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn7" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn7" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn7" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn8" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn8" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn8" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn8" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn8" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn8" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn9" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn9" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn9" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn9" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn9" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn9" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridColumn10" type="VBoxContainer" parent="WaveController/Wave"]
+layout_mode = 2
+
+[node name="GridItem" parent="WaveController/Wave/GridColumn10" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem2" parent="WaveController/Wave/GridColumn10" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem3" parent="WaveController/Wave/GridColumn10" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem4" parent="WaveController/Wave/GridColumn10" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="GridItem5" parent="WaveController/Wave/GridColumn10" instance=ExtResource("9_frt8h")]
+layout_mode = 2
+
+[node name="Inventory" parent="." instance=ExtResource("12_wgqxx")]
+position = Vector2(597, 22)
+
+[node name="Cards" type="HBoxContainer" parent="Inventory"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SunFlowerCard2" parent="Inventory/Cards" instance=ExtResource("11_mw044")]
+layout_mode = 2
+
+[node name="SlimeCard" parent="Inventory/Cards" instance=ExtResource("10_lobfh")]
+layout_mode = 2
+
+[node name="GameOverTarget" parent="." instance=ExtResource("13_q0nrc")]
+
+[connection signal="timeout" from="HUD/MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="HUD/StartButton" to="HUD/StartButton" method="_on_pressed"]
+[connection signal="start_game" from="HUD/StartButton" to="." method="_on_start_button_start_game"]
+[connection signal="start_game" from="HUD/StartButton" to="HUD/StartButton" method="_on_start_game"]
+[connection signal="grid_item_action" from="GridMap" to="." method="_on_grid_map_grid_item_action"]
+[connection signal="moved_to_step" from="WaveController/Wave" to="WaveController/Wave" method="_on_moved_to_step"]
+[connection signal="wave_ended" from="WaveController/Wave" to="." method="_on_wave_ended"]
+[connection signal="wave_ended" from="WaveController/Wave" to="WaveController" method="_on_wave_ended"]
+[connection signal="wave_started" from="WaveController/Wave" to="WaveController" method="_on_wave_started"]
+[connection signal="wave_started" from="WaveController/Wave" to="WaveController/Wave" method="_on_wave_started"]
+[connection signal="card_selected" from="Inventory" to="." method="_on_new_inventory_card_selected"]
+[connection signal="card_pressed" from="Inventory/Cards/SunFlowerCard2" to="Inventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="Inventory/Cards/SlimeCard" to="Inventory" method="_on_card_pressed"]

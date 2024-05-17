@@ -2,14 +2,33 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_3tp4e"]
 [ext_resource type="PackedScene" uid="uid://bob6kppcchqmu" path="res://scenes/map.tscn" id="1_stwdr"]
-[ext_resource type="PackedScene" uid="uid://45tccxis6no" path="res://scenes/hud.tscn" id="2_5pu7c"]
+[ext_resource type="PackedScene" uid="uid://ctsps682dvg7k" path="res://scenes/level.tscn" id="3_2lqw2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3tp4e")
 
-[node name="SunTimer" type="Timer" parent="."]
-wait_time = 10.0
+[node name="Levels" type="Node2D" parent="."]
 
-[node name="Day" parent="." instance=ExtResource("1_stwdr")]
+[node name="Day" parent="Levels" instance=ExtResource("1_stwdr")]
 
-[node name="HUD" parent="." instance=ExtResource("2_5pu7c")]
+[node name="Level" parent="Levels" instance=ExtResource("3_2lqw2")]
+
+[node name="LevelSelector" type="Node2D" parent="."]
+scale = Vector2(513.967, 84.3436)
+
+[node name="Levels" type="VBoxContainer" parent="LevelSelector"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+scale = Vector2(245.702, 58.2564)
+
+[node name="Level1" type="Button" parent="LevelSelector/Levels"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+text = "LEVEL 1"
+
+[node name="Level1" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 20)
+offset_right = 100.0
+offset_bottom = 31.0
+text = "LEVEL 1"

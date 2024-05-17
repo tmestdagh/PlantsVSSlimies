@@ -19,3 +19,5 @@ signal spawn_entity(card: Card)
 signal inventory_card_selected(card: Card)
 
 signal play_card(card: Card, location: GridItem)
+
+signal game_state_updated(game_state)

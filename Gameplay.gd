@@ -7,6 +7,8 @@ var current_card: Card
 const Sol : Resource = preload("res://scenes/sol.tscn")
 const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
 
+var game_state: Dictionary
+
 func _ready():
 	print("Gameplay is ready to start")
 	setup_signals()
@@ -29,13 +31,25 @@ func _on_inventory_card_selected(card: Card):
 	print("Gameplay#on_inventory_card_selected %s" % card)	
 	current_card = card
 	
+func update_game_state(entity_type):
+	entity_type = entity_type.to_lower()
+	if game_state.has(entity_type):
+		game_state[entity_type] =  game_state[entity_type] + 1
+	else:
+		game_state[entity_type] = 1
+	EventBus.game_state_updated.emit(game_state)
+	
 func _on_spawn_entity(card: Card):
 	var entity = card.entity.instantiate()
-	print("Gameplay#on_spawn_entity %s" % entity)
+	var entity_type: String = entity.get_meta("type")
+	print("Gameplay#on_spawn_entity %s" % entity_type)
 	entity.position = card.global_position
 	entity.z_index = 10
 	add_child(entity)
+	update_game_state(entity_type)
+		
 	print("Entity %s added hp=%d" % [entity, entity.health])
+	print("Entities in play %s" % game_state)
 	
 #func _on_spawn_entity(card: Card):
 	#print("Gameplay#on_spawn_entity %s" % card)
