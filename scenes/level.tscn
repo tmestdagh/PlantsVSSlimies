@@ -77,14 +77,20 @@ script = ExtResource("5_cag3a")
 [node name="DebugView" type="Node2D" parent="HUD"]
 script = ExtResource("6_ah74o")
 
-[node name="EntitiesInPlayLabel" type="Label" parent="HUD/DebugView"]
-offset_left = 1340.0
-offset_top = 17.0
-offset_right = 1419.0
-offset_bottom = 72.0
-scale = Vector2(0.589411, 0.589411)
-theme_override_font_sizes/font_size = 40
-text = "0 - 0"
+[node name="PlantCountLabel" type="Label" parent="HUD/DebugView"]
+offset_left = 1200.0
+offset_right = 1300.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "Plants"
+
+[node name="SlimeCountLabel" type="Label" parent="HUD/DebugView"]
+offset_left = 1200.0
+offset_top = 22.0
+offset_right = 1300.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+text = "Slimes"
 
 [node name="GridMap" parent="." instance=ExtResource("6_c43t3")]
 offset_right = 1136.0

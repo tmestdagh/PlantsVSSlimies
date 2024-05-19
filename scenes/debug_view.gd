@@ -22,4 +22,5 @@ func _on_game_state_updated(game_state):
 	else:
 		slimes = 0
 		
-	$EntitiesInPlayLabel.text = "%d - %d" % [plants, slimes]
+	$PlantCountLabel.text = "Plant \t %d" % plants
+	$SlimeCountLabel.text = "Slime \t %d" % slimes

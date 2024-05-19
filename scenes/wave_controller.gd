@@ -36,7 +36,8 @@ func _on_wave_ended(wave: Wave):
 	if current_wave_index +1 < waves.size():
 		set_current_wave(current_wave_index +1)
 	else:
-		EventBus.level_completed.emit()
+		EventBus.waves_completed.emit()
+		#EventBus.level_completed.emit()
 
 func _on_timer_timeout():
 	print("WaveController#timeout")
