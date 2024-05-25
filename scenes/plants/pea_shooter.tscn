@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cod8x1f7fpfd7"]
+
+[ext_resource type="PackedScene" uid="uid://ggbqhf8t2dn7" path="res://scenes/entity.tscn" id="1_qoqhj"]
+[ext_resource type="Script" path="res://behaviours/attack_behavior.gd" id="2_rgq1p"]
+[ext_resource type="Texture2D" uid="uid://4n8qahgnckbh" path="res://art/pea_shooter.png" id="2_temlb"]
+
+[node name="PeaShooter" instance=ExtResource("1_qoqhj")]
+scale = Vector2(0.192, 0.192)
+
+[node name="Sprite2D" parent="Area2D" index="1"]
+position = Vector2(382, 312)
+scale = Vector2(1, 1)
+texture = ExtResource("2_temlb")
+
+[node name="AttackBehavior" type="Node" parent="." index="1"]
+script = ExtResource("2_rgq1p")
