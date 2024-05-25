@@ -77,18 +77,29 @@ script = ExtResource("5_cag3a")
 [node name="DebugView" type="Node2D" parent="HUD"]
 script = ExtResource("6_ah74o")
 
-[node name="PlantCountLabel" type="Label" parent="HUD/DebugView"]
-offset_left = 1200.0
-offset_right = 1300.0
-offset_bottom = 28.0
+[node name="ReferenceRect" type="ReferenceRect" parent="HUD/DebugView"]
+offset_left = 1178.0
+offset_top = 14.0
+offset_right = 1378.0
+offset_bottom = 84.0
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="PlantCountLabel" type="Label" parent="HUD/DebugView/ReferenceRect"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 36.0
 theme_override_font_sizes/font_size = 20
 text = "Plants"
 
-[node name="SlimeCountLabel" type="Label" parent="HUD/DebugView"]
-offset_left = 1200.0
-offset_top = 22.0
-offset_right = 1300.0
-offset_bottom = 50.0
+[node name="SlimeCountLabel" type="Label" parent="HUD/DebugView/ReferenceRect"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 112.0
+offset_bottom = 64.0
 theme_override_font_sizes/font_size = 20
 text = "Slimes"
 

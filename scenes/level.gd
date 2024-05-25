@@ -15,6 +15,7 @@ func _ready():
 	Utils.disable_and_hide_node($GridMap)
 	Utils.disable_and_hide_node($Inventory)
 	Utils.disable_and_hide_node(($WaveController))
+	Utils.disable_and_hide_node($HUD/DebugView)
 	$HUD/ScoreContainer.setValue(Gameplay.currentSols)
 	# Connect the EventBus signals
 	EventBus.connect("gameover", _on_gameover)
@@ -32,6 +33,7 @@ func _on_start_button_start_game():
 	Utils.enable_and_show_node($GridMap)
 	Utils.enable_and_show_node($Inventory)
 	Utils.enable_and_show_node(($WaveController))
+	Utils.enable_and_show_node($HUD/DebugView)
 	$WaveController.start()
 
 func _on_message_timer_timeout():

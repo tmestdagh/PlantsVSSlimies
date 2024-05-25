@@ -10,5 +10,5 @@ func setup_signals():
 func _on_game_state_updated(game_state: GameState):
 	print("DebugView#game_state_updated %s" % game_state)
 		
-	$PlantCountLabel.text = "Plant \t %d" % game_state.plant_count
-	$SlimeCountLabel.text = "Slime \t %d" % game_state.slime_count
+	$ReferenceRect/PlantCountLabel.text = "Plant \t %d" % game_state.plant_count
+	$ReferenceRect/SlimeCountLabel.text = "Slime \t %d" % game_state.slime_count
