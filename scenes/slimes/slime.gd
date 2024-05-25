@@ -1,11 +1,8 @@
 class_name Slime
 extends Entity
 
-@export var speed : int = 10
-@export var direction: int = -1
 @export var bite_size: int = 30
 
-var velocity : int = 0
 var moving : bool = false
 var plant
 
@@ -15,21 +12,11 @@ signal entity_detected(entity: Entity)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = speed * direction
 	moving = true
 	
 #func setup_signals():
 	#print("Slime#setup_signals")
 	#plant_detected.connect(_on_plant_detected)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	if moving:
-		move(delta * velocity)
-
-func move(distance):
-	#print("Slime moving ", distance)
-	position.x += distance
 
 func _on_area_entered(area):
 	plant_detected.emit(area.get_parent())
