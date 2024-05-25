@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctsps682dvg7k"]
+[gd_scene load_steps=16 format=3 uid="uid://ctsps682dvg7k"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_cplmr"]
 [ext_resource type="Script" path="res://scenes/MessageTimer.gd" id="2_8k0c3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bs67li147m0ju" path="res://scenes/cards/sun_flower_card.tscn" id="11_mw044"]
 [ext_resource type="PackedScene" uid="uid://panhvgo8pdae" path="res://scenes/inventory/inventory.tscn" id="12_wgqxx"]
 [ext_resource type="PackedScene" uid="uid://gic52v4hlmeu" path="res://scenes/target.tscn" id="13_q0nrc"]
+[ext_resource type="PackedScene" uid="uid://be1sd80wi76i5" path="res://scenes/cards/pea_shooter_card.tscn" id="14_gv7kd"]
 
 [node name="Level" type="CanvasLayer"]
 script = ExtResource("1_cplmr")
@@ -321,6 +322,9 @@ layout_mode = 2
 [node name="SlimeCard" parent="Inventory/Cards" instance=ExtResource("10_lobfh")]
 layout_mode = 2
 
+[node name="PeaShooterCard" parent="Inventory/Cards" instance=ExtResource("14_gv7kd")]
+layout_mode = 2
+
 [node name="GameOverTarget" parent="." instance=ExtResource("13_q0nrc")]
 
 [connection signal="timeout" from="HUD/MessageTimer" to="." method="_on_message_timer_timeout"]
@@ -336,3 +340,4 @@ layout_mode = 2
 [connection signal="card_selected" from="Inventory" to="." method="_on_new_inventory_card_selected"]
 [connection signal="card_pressed" from="Inventory/Cards/SunFlowerCard2" to="Inventory" method="_on_card_pressed"]
 [connection signal="card_pressed" from="Inventory/Cards/SlimeCard" to="Inventory" method="_on_card_pressed"]
+[connection signal="card_pressed" from="Inventory/Cards/PeaShooterCard" to="Inventory" method="_on_card_pressed"]
