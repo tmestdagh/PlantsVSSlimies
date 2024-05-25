@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfb80ndw8m81t"]
+
+[ext_resource type="Script" path="res://scenes/level_select_button.gd" id="1_nmfm7"]
+
+[node name="LevelSelectButton" type="Button"]
+theme_override_font_sizes/font_size = 35
+text = "LEVEL ?"
+script = ExtResource("1_nmfm7")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="select_level" from="." to="." method="_on_select_level"]

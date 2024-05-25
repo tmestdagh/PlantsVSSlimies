@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvqfmnhkikfip"]
+[gd_scene load_steps=5 format=3 uid="uid://cvqfmnhkikfip"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_3tp4e"]
 [ext_resource type="PackedScene" uid="uid://bob6kppcchqmu" path="res://scenes/map.tscn" id="1_stwdr"]
 [ext_resource type="PackedScene" uid="uid://ctsps682dvg7k" path="res://scenes/level.tscn" id="3_2lqw2"]
+[ext_resource type="PackedScene" uid="uid://dfb80ndw8m81t" path="res://scenes/level_select_button.tscn" id="4_6wot5"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3tp4e")
@@ -11,24 +12,20 @@ script = ExtResource("1_3tp4e")
 
 [node name="Day" parent="Levels" instance=ExtResource("1_stwdr")]
 
-[node name="Level" parent="Levels" instance=ExtResource("3_2lqw2")]
+[node name="Level1" parent="Levels" instance=ExtResource("3_2lqw2")]
+visible = false
 
-[node name="LevelSelector" type="Node2D" parent="."]
-scale = Vector2(513.967, 84.3436)
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="Levels" type="VBoxContainer" parent="LevelSelector"]
-custom_minimum_size = Vector2(200, 200)
-offset_right = 200.0
-offset_bottom = 200.0
-scale = Vector2(245.702, 58.2564)
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D"]
+offset_left = 505.0
+offset_top = 227.0
+offset_right = 905.0
+offset_bottom = 427.0
 
-[node name="Level1" type="Button" parent="LevelSelector/Levels"]
-custom_minimum_size = Vector2(100, 20)
+[node name="LevelSelectButton" parent="Node2D/VBoxContainer" node_paths=PackedStringArray("scene") instance=ExtResource("4_6wot5")]
 layout_mode = 2
-text = "LEVEL 1"
+level = 1
+scene = NodePath("../../../Levels/Level1")
 
-[node name="Level1" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 20)
-offset_right = 100.0
-offset_bottom = 31.0
-text = "LEVEL 1"
+[connection signal="select_level" from="Node2D/VBoxContainer/LevelSelectButton" to="." method="_on_level_select"]

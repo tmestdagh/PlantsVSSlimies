@@ -1,3 +1,4 @@
+class_name Level
 extends CanvasLayer
 
 # TODO	Rename HUD to Level
@@ -10,6 +11,7 @@ func show_message(text):
 func _ready():
 	print("Loading HUD")
 	# Hide everything except the start button
+	Utils.disable_and_hide_node($HUD)
 	Utils.disable_and_hide_node($GridMap)
 	Utils.disable_and_hide_node($Inventory)
 	Utils.disable_and_hide_node(($WaveController))
@@ -18,7 +20,10 @@ func _ready():
 	EventBus.connect("gameover", _on_gameover)
 	EventBus.connect("spawn_slime", _on_slime_spawn)
 	EventBus.sols_update.connect(_on_sols_update)
-
+	
+func load():
+	print("Level loading ...")
+	Utils.enable_and_show_node($HUD)
 
 func _on_start_button_start_game():
 	print("signal -> start_game -> HUD")
