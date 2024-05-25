@@ -3,6 +3,7 @@ extends Node
 var currentSols : int = 50
 var currentInventoryItem : Object
 var current_card: Card
+var current_level: Level
 
 const Sol : Resource = preload("res://scenes/sol.tscn")
 const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
@@ -40,8 +41,8 @@ func _on_spawn_entity(card: Card):
 	var entity_type: String = entity.get_meta("type")
 	print("Gameplay#on_spawn_entity %s" % entity_type)
 	entity.position = card.global_position
-	entity.z_index = 10
-	add_child(entity)
+	#entity.z_index = 10
+	current_level.add_child(entity)
 	update_game_state(entity_type)
 		
 	print("Entity %s added hp=%d" % [entity, entity.health])
@@ -57,7 +58,7 @@ func _on_sun_flower_sunshine():
 	var sol = Sol.instantiate()
 	sol.sol_pickup.connect(_on_sol_pickup)
 	sol.set_position(Vector2(randi_range(100, 500), randi_range(100, 500)))
-	add_child(sol)
+	current_level.add_child(sol)
 
 func _on_sol_pickup(sol):
 	print("Gameplay#sol pickup ", sol)

@@ -15,6 +15,7 @@ func _process(delta):
 func load_level(level: Level):
 	print("Main#load_level %s" % level)
 	Utils.enable_and_show_node($Levels)
+	Gameplay.current_level = level
 	level.load()
 	Utils.enable_and_show_node(level)
 
