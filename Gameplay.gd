@@ -7,7 +7,7 @@ var current_card: Card
 const Sol : Resource = preload("res://scenes/sol.tscn")
 const SlimeScene : Resource = preload("res://scenes/slimes/slime.tscn")
 
-var game_state: Dictionary
+var game_state: GameState = GameState.new()
 
 func _ready():
 	print("Gameplay is ready to start")
@@ -33,12 +33,7 @@ func _on_inventory_card_selected(card: Card):
 	current_card = card
 	
 func update_game_state(entity_type):
-	entity_type = entity_type.to_lower()
-	if game_state.has(entity_type):
-		game_state[entity_type] =  game_state[entity_type] + 1
-	else:
-		game_state[entity_type] = 1
-	EventBus.game_state_updated.emit(game_state)
+	game_state.add(entity_type)
 	
 func _on_spawn_entity(card: Card):
 	var entity = card.entity.instantiate()
@@ -50,7 +45,8 @@ func _on_spawn_entity(card: Card):
 	update_game_state(entity_type)
 		
 	print("Entity %s added hp=%d" % [entity, entity.health])
-	print("Entities in play %s" % game_state)
+	print("Slimes in play %s" % game_state.slime_count)
+	print("Plants in play %s" % game_state.plant_count)
 	
 #func _on_spawn_entity(card: Card):
 	#print("Gameplay#on_spawn_entity %s" % card)
@@ -134,9 +130,9 @@ func updateCurrentSols(_sols):
 	
 func _on_waves_completed():
 	print("Gameplay#waves_completed #game_state=%s" % game_state) 
-	print("Gameplay#slimes %d" % game_state.slime)
+	print("Gameplay#slimes %d" % game_state.slime_count)
 	
-	if game_state.slime == 0:
+	if game_state.slime_count == 0:
 		# Level is only completed when all slimes are killed
 		EventBus.level_completed.emit()
 	
