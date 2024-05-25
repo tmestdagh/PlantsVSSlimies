@@ -48,17 +48,6 @@ func _on_spawn_entity(card: Card):
 	print("Slimes in play %s" % game_state.slime_count)
 	print("Plants in play %s" % game_state.plant_count)
 	
-#func _on_spawn_entity(card: Card):
-	#print("Gameplay#on_spawn_entity %s" % card)
-	#var slime = SlimeScene.instantiate()
-	##var slime: Cell = card.plant.duplicate()
-	#slime.position = card.global_position
-	#slime.z_index = 10
-	#print(slime)
-	#add_child(slime)
-	##slime.show()
-	#print("Entity %s added" % card.plant)
-	
 func _on_plant_selected(plant: Cell):
 	print("Gameplay#on_plant_selected %s" % plant)
 	currentInventoryItem = plant
