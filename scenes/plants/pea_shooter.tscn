@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cod8x1f7fpfd7"]
+[gd_scene load_steps=7 format=3 uid="uid://cod8x1f7fpfd7"]
 
 [ext_resource type="PackedScene" uid="uid://ggbqhf8t2dn7" path="res://scenes/entity.tscn" id="1_qoqhj"]
+[ext_resource type="Script" path="res://scenes/plants/pea_shooter.gd" id="2_pfgm2"]
 [ext_resource type="Script" path="res://behaviours/attack_behavior.gd" id="2_rgq1p"]
 [ext_resource type="Texture2D" uid="uid://bluvm26f5apn7" path="res://art/plants/pea_shooter.png" id="2_x41om"]
+[ext_resource type="PackedScene" uid="uid://cjsg3081clkv6" path="res://scenes/pea_bullet.tscn" id="4_hebj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nv6as"]
+size = Vector2(372.67, 31.2986)
 
 [node name="PeaShooter" instance=ExtResource("1_qoqhj")]
 scale = Vector2(0.192, 0.192)
+script = ExtResource("2_pfgm2")
 
 [node name="Area2D" parent="." index="0"]
 scale = Vector2(0.592, 0.592)
@@ -20,3 +26,25 @@ texture = ExtResource("2_x41om")
 
 [node name="AttackBehavior" type="Node" parent="." index="1"]
 script = ExtResource("2_rgq1p")
+bullet = ExtResource("4_hebj6")
+
+[node name="SlimeDetectArea2D" type="Area2D" parent="." index="2"]
+monitoring = false
+metadata/detect_only = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeDetectArea2D" index="0"]
+position = Vector2(2192.71, 244.07)
+scale = Vector2(11.7951, 16.0213)
+shape = SubResource("RectangleShape2D_nv6as")
+debug_color = Color(0.898039, 0.211765, 0.592157, 0.419608)
+metadata/continue_on_detect = true
+
+[node name="SlimeDetectTimer" type="Timer" parent="." index="3"]
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+
+[connection signal="area_entered" from="SlimeDetectArea2D" to="." method="_on_slime_detect_area_2d_area_entered"]
+[connection signal="child_entered_tree" from="SlimeDetectArea2D/CollisionShape2D" to="." method="_on_slime_detect_cs_2d_child_entered_tree"]
+[connection signal="timeout" from="SlimeDetectTimer" to="." method="_on_slime_detect_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="AttackBehavior" method="attack"]

@@ -5,16 +5,22 @@ extends Node
 @export var direction: int = -1
 
 var velocity: int = 0 
-@onready var host : Entity = get_node("../")
+var moving: bool = false
+
+@onready var host = get_node("../")
 
 func _ready():
 	print("%s loading MovementBehavior" % get_parent())
 	velocity = speed * direction
+	moving = true
 	
-func _physics_process(delta):
-	if host.moving:
-		move(delta * velocity)
+func move_delta(delta):
+	move(delta * velocity)
 		
 func move(distance):
 	#print("Slime moving ", distance)
 	host.position.x += distance
+
+func _physics_process(delta):
+	if moving:
+		move_delta(delta)

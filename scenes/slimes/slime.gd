@@ -19,12 +19,17 @@ func _ready():
 	#plant_detected.connect(_on_plant_detected)
 
 func _on_area_entered(area):
-	plant_detected.emit(area.get_parent())
-	entity_detected.emit(area.get_parent())
+	var detect_only = area.get_meta("detect_only")
+	print("Slime area entered %s - detect_only=%s" % [area, detect_only])
 	
-func _on_plant_detected(plant: Cell):
-	print("Slime#on_plant_detected %s" % plant)
-	stop_moving_and_start_eating(plant)
+	if !detect_only:
+		#plant_detected.emit(area.get_parent())
+		entity_detected.emit(area.get_parent())
+		# In case areea is a PeaBullet
+	
+#func _on_plant_detected(plant: Cell):
+	#print("Slime#on_plant_detected %s" % plant)
+	#stop_moving_and_start_eating(plant)
 	
 func _on_entity_detected(entity: Entity):
 	print("Slime#on_entity_detected %s" % entity)
@@ -34,7 +39,7 @@ func stop_moving_and_start_eating(_plant):
 	plant = _plant
 	print("Slime#stop_moving_and_start_eating %s" % plant)
 	# stop
-	moving = false
+	$MovementBehavior.moving = false
 	# subscribe to plant health
 	plant.connect("plant_eaten", _on_plant_eaten)
 	# start eating the plant
@@ -45,7 +50,7 @@ func _on_plant_eaten():
 	plant = null
 	$EatingPace.stop()
 	# start moving again
-	moving = true
+	$MovementBehavior.moving = true
 
 func _on_eating_pace_timeout():	
 	if plant:
@@ -55,3 +60,7 @@ func _on_eating_pace_timeout():
 		else:
 			# Stop eating as the plant is gone
 			_on_plant_eaten()
+
+func _on_dead():
+	print("Slime#I DIED %s" % self)
+	queue_free()
