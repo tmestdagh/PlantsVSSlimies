@@ -33,7 +33,7 @@ func _on_inventory_card_selected(card: Card):
 	print("Gameplay#on_inventory_card_selected %s" % card)	
 	current_card = card
 	
-func update_game_state(entity_type):
+func game_state_add(entity_type):
 	game_state.add(entity_type)
 	
 func _on_spawn_entity(card: Card):
@@ -43,7 +43,7 @@ func _on_spawn_entity(card: Card):
 	entity.position = card.global_position
 	#entity.z_index = 10
 	current_level.add_child(entity)
-	update_game_state(entity_type)
+	game_state_add(entity_type)
 		
 	print("Entity %s added hp=%d" % [entity, entity.health])
 	print("Slimes in play %s" % game_state.slime_count)
