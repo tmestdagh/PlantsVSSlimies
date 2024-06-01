@@ -15,5 +15,6 @@ func _deal_damage(entity: Entity):
 	print("%s#deal_damage to %s -%d HP" % [host, entity, damage])
 	deal_damage.emit(entity)
 
-func _on_deal_damage(slime: Slime):
-	slime.damage()
+func _on_deal_damage(entity: Entity):
+	print("%s#on_deal_damage" % host)
+	entity.damage()

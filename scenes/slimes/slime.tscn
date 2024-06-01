@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dch11o2847jf2"]
+[gd_scene load_steps=7 format=3 uid="uid://dch11o2847jf2"]
 
 [ext_resource type="Texture2D" uid="uid://byx5fhkggvnip" path="res://art/slimes/slime.png" id="1_6hm3f"]
 [ext_resource type="Script" path="res://scenes/slimes/slime.gd" id="1_wyugy"]
 [ext_resource type="Script" path="res://behaviours/movement_behavior.gd" id="3_4t42t"]
 [ext_resource type="Script" path="res://behaviours/attackable.gd" id="4_gtmgr"]
+[ext_resource type="Script" path="res://behaviours/deal_damage_behavior.gd" id="5_8m6ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajivx"]
 size = Vector2(93.4375, 46.875)
@@ -33,7 +34,12 @@ script = ExtResource("3_4t42t")
 [node name="Attackable" type="Node" parent="."]
 script = ExtResource("4_gtmgr")
 
+[node name="DealDamageBehavior" type="Node" parent="."]
+script = ExtResource("5_8m6ki")
+damage = 1
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="." to="DealDamageBehavior" method="_deal_damage"]
 [connection signal="dead" from="." to="." method="_on_dead"]
 [connection signal="entity_detected" from="." to="." method="_on_entity_detected"]
 [connection signal="plant_detected" from="." to="." method="_on_plant_detected"]

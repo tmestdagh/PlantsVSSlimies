@@ -23,6 +23,6 @@ direction = 1
 [node name="DealDamageBehavior" type="Node" parent="."]
 script = ExtResource("3_dng0g")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="." to="DealDamageBehavior" method="_deal_damage"]
+[connection signal="dead" from="." to="." method="_on_dead"]
 [connection signal="deal_damage" from="DealDamageBehavior" to="." method="_on_deal_damage"]

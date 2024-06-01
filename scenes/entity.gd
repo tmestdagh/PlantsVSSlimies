@@ -14,7 +14,7 @@ func damage(amount: int = 60):
 	health -= amount
 	print("%s DMG %d #hp=%d" % [self, amount, health])
 	if health <= 0:
-		print("Entity DEAD")
+		print("Entity %s DEAD" % self)
 		dead.emit(self)
 	else:
 		modulate.a = health/100.0
