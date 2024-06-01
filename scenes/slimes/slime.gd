@@ -14,10 +14,6 @@ signal entity_detected(entity: Entity)
 func _ready():
 	moving = true
 
-#func setup_signals():
-	#print("Slime#setup_signals")
-	#plant_detected.connect(_on_plant_detected)
-
 func _on_area_entered(area):
 	var detect_only = area.get_meta("detect_only")
 	print("Slime area entered %s - detect_only=%s" % [area, detect_only])
@@ -26,10 +22,6 @@ func _on_area_entered(area):
 		#plant_detected.emit(area.get_parent())
 		entity_detected.emit(area.get_parent())
 		# In case areea is a PeaBullet
-
-#func _on_plant_detected(plant: Cell):
-	#print("Slime#on_plant_detected %s" % plant)
-	#stop_moving_and_start_eating(plant)
 
 func _on_entity_detected(entity: Entity):
 	print("Slime#on_entity_detected %s" % entity)

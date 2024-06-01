@@ -109,12 +109,6 @@ func _on_sale(itemType, sols):
 	print("Plant sold ", itemType, sols)
 	updateCurrentSols(-1 * sols)
 
-#func _on_plant(_gridItem, _currentInventoryItem: Card):
-	#print("Planting ", _currentInventoryItem, " on ", _gridItem)
-	#var card: Card = _currentInventoryItem.duplicate()
-	#card.size = _gridItem.size
-	#_gridItem.add_child(card)
-
 func _on_plant(_gridItem, _currentInventoryItem):
 	print("Planting ", _currentInventoryItem, " on ", _gridItem)
 	var SceneToInstantiate = load(_currentInventoryItem.scene_file_path)

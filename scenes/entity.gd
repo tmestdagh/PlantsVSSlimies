@@ -1,8 +1,5 @@
 class_name Entity extends Node2D
 
-# TODO Woops, new func should have been made on PeaShooter script instead of entityt
-
-
 @export var health : int = 100
 
 signal dead(entity: Entity)
