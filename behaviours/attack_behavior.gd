@@ -1,3 +1,4 @@
+# TODO	Should be ShootBehavior probably
 class_name AttackBehavior
 extends Node
 
@@ -20,6 +21,6 @@ func start_attack():
 
 func attack():
 	print("%s#AttackBehavior attack" % host)
-	var _bullet = bullet.instantiate()
+	var _bullet: PeaBullet = bullet.instantiate()
 	_bullet.position = Vector2(host.position.x + 80, host.position.y + 30)
 	host.get_parent().add_child(_bullet)

@@ -32,7 +32,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_si5l8")
 
-[node name="Button" type="Button" parent="."]
+[node name="TryAgainButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 500.0
@@ -42,4 +42,10 @@ tooltip_text = "TRY AGAIN"
 theme_override_font_sizes/font_size = 60
 text = "TRY AGAIN"
 
-[connection signal="pressed" from="Button" to="." method="retry"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="TryAgainButton" to="." method="retry"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
