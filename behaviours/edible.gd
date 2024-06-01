@@ -13,7 +13,7 @@ func _on_being_eaten(slime: Entity, bite_size):
 	host.modulate.a = host.health/100.0
 	if host.health <= 0:
 		print("Dead")
-		host.dead.emit()
+		host.dead.emit(host)
 		host.plant_eaten.emit()
 		host.queue_free()
 

@@ -7,7 +7,7 @@ func show_message(text):
 	$HUD/MessageLabel.text = text
 	$HUD/MessageLabel.show()
 	$HUD/MessageTimer.start()
-	
+
 func _ready():
 	print("Loading HUD")
 	# Hide everything except the start button
@@ -21,7 +21,7 @@ func _ready():
 	EventBus.connect("gameover", _on_gameover)
 	EventBus.connect("spawn_slime", _on_slime_spawn)
 	EventBus.sols_update.connect(_on_sols_update)
-	
+
 func load():
 	print("Level loading ...")
 	Utils.enable_and_show_node($HUD)
@@ -45,11 +45,11 @@ func _on_inventory_item_select(type):
 func _on_grid_map_grid_item_action(grid_item):
 	print("HUD#_on_grid_map_grid_item_action ", grid_item)
 	EventBus.grid_item_selected.emit(grid_item)
-	
+
 func _on_sols_update(_sols):
 	print("HUD#on_sols_update %d" % _sols)
 	$HUD/ScoreContainer.setValue(_sols)
-	
+
 func _on_slime_spawn(_position):
 	print("HUD#on_slime_spawn")
 	print("position ", _position)
@@ -73,4 +73,4 @@ func _on_wave_started(wave):
 
 func _on_wave_ended(wave: Wave):
 	print("HUD#Wave Ended %s" % wave)
-	
+
