@@ -44,6 +44,7 @@ metadata/continue_on_detect = true
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="." index="4"]
+wait_time = 1.5
 
 [connection signal="area_entered" from="SlimeDetectArea2D" to="." method="_on_slime_detect_area_2d_area_entered"]
 [connection signal="child_entered_tree" from="SlimeDetectArea2D/CollisionShape2D" to="." method="_on_slime_detect_cs_2d_child_entered_tree"]

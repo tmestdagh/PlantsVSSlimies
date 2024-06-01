@@ -7,3 +7,4 @@
 [node name="PeaShooterCard" instance=ExtResource("1_c4yh3")]
 texture_normal = ExtResource("2_8dmmc")
 entity = ExtResource("3_bpaqo")
+cost = 100
