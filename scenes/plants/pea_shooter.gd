@@ -10,7 +10,7 @@ func _on_slime_detect_area_2d_area_entered(area):
 		if !attack_behavior.is_attacking:
 			$AttackBehavior.start_attack()
 	else:
-		print("%s #attack_behavior=%s" % [self, attack_behavior])	
+		print("%s #attack_behavior=%s" % [self, attack_behavior])
 
 
 func _on_slime_detect_timer_timeout():

@@ -12,6 +12,7 @@ size = Vector2(372.67, 31.2986)
 [node name="PeaShooter" instance=ExtResource("1_qoqhj")]
 scale = Vector2(0.192, 0.192)
 script = ExtResource("2_pfgm2")
+metadata/type = "Plant"
 
 [node name="Area2D" parent="." index="0"]
 scale = Vector2(0.592, 0.592)

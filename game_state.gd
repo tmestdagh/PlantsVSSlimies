@@ -52,7 +52,7 @@ func add_plant():
 	state[PLANT] = plant_count
 
 func remove_plant():
-	slime_count -= 1
+	plant_count -= 1
 	state[PLANT] = plant_count
 
 func slimes():
