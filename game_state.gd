@@ -14,7 +14,7 @@ func _ready():
 	state[SLIME] = 0
 	state[PLANT] = 0
 	print("GameState %s" % state)
-	
+
 func add(entity_type):
 	match entity_type.to_lower():
 		SLIME:
@@ -23,7 +23,19 @@ func add(entity_type):
 			add_plant()
 		_:
 			print("EntityType %s not found, could not add to game_state" % entity_type)
-	
+
+	print("GameState %s" % state)
+	EventBus.game_state_updated.emit(self)
+
+func remove(entity_type):
+	match entity_type.to_lower():
+		SLIME:
+			remove_slime()
+		PLANT:
+			remove_plant()
+		_:
+			print("EntityType %s not found, could not remove from game_state" % entity_type)
+
 	print("GameState %s" % state)
 	EventBus.game_state_updated.emit(self)
 
@@ -31,12 +43,20 @@ func add_slime():
 	slime_count += 1
 	state[SLIME] = slime_count
 
+func remove_slime():
+	slime_count -= 1
+	state[SLIME] = slime_count
+
 func add_plant():
 	plant_count += 1
 	state[PLANT] = plant_count
-	
+
+func remove_plant():
+	slime_count -= 1
+	state[PLANT] = plant_count
+
 func slimes():
 	return state[SLIME]
-	
+
 func plants():
 	return state[PLANT]
