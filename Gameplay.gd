@@ -33,19 +33,26 @@ func _on_inventory_card_selected(card: Card):
 	print("Gameplay#on_inventory_card_selected %s" % card)
 	current_card = card
 
-func game_state_add(entity_type):
-	game_state.add(entity_type)
 
 func _on_spawn_entity(card: Card):
 	var entity = card.entity.instantiate()
 	var entity_type: String = entity.get_meta("type")
 	print("Gameplay#on_spawn_entity %s" % entity_type)
 	entity.position = card.global_position
-	#entity.z_index = 10
 	current_level.add_child(entity)
-	game_state_add(entity_type)
+	entity.dead.connect(_on_dead_entity)
+	game_state.add(entity_type)
 
 	print("Entity %s added hp=%d" % [entity, entity.health])
+	print("Slimes in play %s" % game_state.slime_count)
+	print("Plants in play %s" % game_state.plant_count)
+
+func _on_dead_entity(entity: Entity):
+	var entity_type: String = entity.get_meta("type")
+	print("Gameplay#dead_entity %s type %s" % [entity, entity_type])
+	game_state.remove(entity_type)
+
+	print("Entity %s removed" % [entity])
 	print("Slimes in play %s" % game_state.slime_count)
 	print("Plants in play %s" % game_state.plant_count)
 
