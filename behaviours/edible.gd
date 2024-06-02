@@ -19,4 +19,8 @@ func _on_being_eaten(slime: Entity, bite_size):
 
 
 func _on_area_entered(area):
-	area.connect("eat", _on_being_eaten)
+	var detect_only = area.get_meta("detect_only")
+	print("%s#Edible#area_entered by %s #detect_only=%b" % [host, area, detect_only])
+
+	if !detect_only:
+		area.slime_behavior.eat.start_eating.connect(_on_being_eaten)

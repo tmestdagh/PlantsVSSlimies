@@ -9,6 +9,7 @@ func spawn():
 
 func _on_dead(entity: Entity):
 	print("Entity#on_dead entity=%s" % entity)
+	queue_free()
 
 func damage(amount: int = 60):
 	health -= amount
