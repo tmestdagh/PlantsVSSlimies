@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjsg3081clkv6"]
+[gd_scene load_steps=5 format=3 uid="uid://cjsg3081clkv6"]
 
 [ext_resource type="Script" path="res://scenes/pea_bullet.gd" id="1_b7ix7"]
 [ext_resource type="Script" path="res://behaviours/movement_behavior.gd" id="1_x40iw"]
+[ext_resource type="Script" path="res://behaviours/deal_damage_behavior.gd" id="3_dng0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oudeg"]
 
 [node name="PeaBullet" type="Area2D"]
 script = ExtResource("1_b7ix7")
+health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.47549, 1.47549)
@@ -18,4 +20,9 @@ script = ExtResource("1_x40iw")
 speed = 100
 direction = 1
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="DealDamageBehavior" type="Node" parent="."]
+script = ExtResource("3_dng0g")
+
+[connection signal="area_entered" from="." to="DealDamageBehavior" method="_deal_damage"]
+[connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="deal_damage" from="DealDamageBehavior" to="." method="_on_deal_damage"]

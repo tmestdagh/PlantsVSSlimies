@@ -1,23 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dch11o2847jf2"]
+[gd_scene load_steps=9 format=3 uid="uid://dch11o2847jf2"]
 
 [ext_resource type="Texture2D" uid="uid://byx5fhkggvnip" path="res://art/slimes/slime.png" id="1_6hm3f"]
 [ext_resource type="Script" path="res://scenes/slimes/slime.gd" id="1_wyugy"]
 [ext_resource type="Script" path="res://behaviours/movement_behavior.gd" id="3_4t42t"]
-[ext_resource type="Script" path="res://behaviours/attackable.gd" id="4_gtmgr"]
+[ext_resource type="Script" path="res://behaviours/deal_damage_behavior.gd" id="5_8m6ki"]
+[ext_resource type="Script" path="res://behaviours/eat_behavior.gd" id="6_ktb6g"]
+[ext_resource type="Script" path="res://behaviours/plant_detector_behavior.gd" id="6_vo8fs"]
+[ext_resource type="Script" path="res://behaviours/slime_behavior.gd" id="8_qf5ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajivx"]
 size = Vector2(93.4375, 46.875)
 
 [node name="Slime" type="Area2D"]
 script = ExtResource("1_wyugy")
-bite_size = 20
 metadata/type = "Slime"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(41, 50)
 shape = SubResource("RectangleShape2D_ajivx")
-
-[node name="EatingPace" type="Timer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(95, 95)
@@ -29,11 +29,27 @@ expand_mode = 3
 [node name="MovementBehavior" type="Node" parent="."]
 script = ExtResource("3_4t42t")
 
-[node name="Attackable" type="Node" parent="."]
-script = ExtResource("4_gtmgr")
+[node name="DealDamageBehavior" type="Node" parent="."]
+script = ExtResource("5_8m6ki")
+damage = 1
+
+[node name="EatBehavior" type="Node" parent="." node_paths=PackedStringArray("chewing_timer")]
+script = ExtResource("6_ktb6g")
+chewing_timer = NodePath("ChewingTimer")
+
+[node name="ChewingTimer" type="Timer" parent="EatBehavior"]
+
+[node name="PlantDetectorBehavior" type="Node" parent="." node_paths=PackedStringArray("detection_area")]
+script = ExtResource("6_vo8fs")
+detection_area = NodePath("..")
+
+[node name="SlimeBehavior" type="Node" parent="."]
+script = ExtResource("8_qf5ul")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="." to="DealDamageBehavior" method="_deal_damage"]
 [connection signal="dead" from="." to="." method="_on_dead"]
-[connection signal="entity_detected" from="." to="." method="_on_entity_detected"]
-[connection signal="plant_detected" from="." to="." method="_on_plant_detected"]
-[connection signal="timeout" from="EatingPace" to="." method="_on_eating_pace_timeout"]
+[connection signal="stop_eating" from="EatBehavior" to="MovementBehavior" method="_start_moving"]
+[connection signal="timeout" from="EatBehavior/ChewingTimer" to="EatBehavior" method="_bite"]
+[connection signal="plant_detected" from="PlantDetectorBehavior" to="EatBehavior" method="_start_eating"]
+[connection signal="plant_detected" from="PlantDetectorBehavior" to="SlimeBehavior" method="_on_plant_detected"]
